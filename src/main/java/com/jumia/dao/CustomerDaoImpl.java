@@ -20,8 +20,9 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public List<Customer> getAll() {
-		List<Customer> customers = jdbcTemplate.query("SELECT * FROM customer", customerMapper);
-		System.out.println(customers);
+		String sql = "SELECT * FROM customer";
+		
+		List<Customer> customers = jdbcTemplate.query(sql, customerMapper);
 		return customers;
 	}
 

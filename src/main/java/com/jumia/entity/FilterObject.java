@@ -6,7 +6,9 @@ public class FilterObject {
 
 	private String sortCol;
 
-	private String filterBy;
+	private String country;
+	
+	private Boolean state;
 
 	public NavigationObject getNavigationObject() {
 		return navigationObject;
@@ -24,12 +26,20 @@ public class FilterObject {
 		this.sortCol = sortCol;
 	}
 
-	public String getFilterBy() {
-		return filterBy;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setFilterBy(String filterBy) {
-		this.filterBy = filterBy;
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Boolean getState() {
+		return state;
+	}
+
+	public void setState(Boolean state) {
+		this.state = state;
 	}
 
 }

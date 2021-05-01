@@ -16,6 +16,10 @@ public class Customer {
 
 	private String phoneNumber;
 
+	private boolean state;
+	
+	private Country country;
+
 	public Integer getId() {
 		return id;
 	}
@@ -39,4 +43,13 @@ public class Customer {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public boolean getState() {
+		return state;
+	}
+
+	public void setState(boolean state) {
+		this.state = state;
+	}
+
 }
