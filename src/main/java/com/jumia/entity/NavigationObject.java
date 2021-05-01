@@ -2,6 +2,12 @@ package com.jumia.entity;
 
 public class NavigationObject {
 
+	public NavigationObject(int page, int recordsPerPage) {
+		super();
+		this.page = page;
+		this.recordsPerPage = recordsPerPage;
+	}
+
 	private int page;
 
 	private int recordsPerPage;

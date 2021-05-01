@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jumia.dao.CustomerDao;
+import com.jumia.entity.FilterObject;
 import com.jumia.model.Customer;
 
 @Service
@@ -20,6 +21,11 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public List<Customer> getAll() {
 		return customerDao.getAll();
+	}
+
+	@Override
+	public List<Customer> getAll(FilterObject filterObject) {
+		return customerDao.getAll(filterObject);
 	}
 
 	

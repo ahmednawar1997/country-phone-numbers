@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jumia.entity.FilterObject;
+import com.jumia.entity.NavigationObject;
 import com.jumia.model.Customer;
 import com.jumia.service.CustomerService;
 
@@ -19,8 +21,9 @@ public class CustomerController {
 
 	@GetMapping("/")
 	public List<Customer> list(@RequestParam int page, @RequestParam int numPerPage) {
-		System.out.println(page);
-		System.out.println(numPerPage);
-		return service.getAll();
+		NavigationObject navigationObject = new NavigationObject(page, numPerPage);
+		FilterObject filterObject = new FilterObject(navigationObject, "name", "country", true);
+		
+		return service.getAll(filterObject);
 	}
 }
