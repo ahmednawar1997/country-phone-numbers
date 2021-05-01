@@ -5,5 +5,6 @@ public enum Country {
 	Ethiopia,
 	Morocco,
 	Mozambique,
-	Uganda
+	Uganda,
+	Error
 }
