@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.jumia.entity.Country;
 
 @Component
-public class CountryFactory implements Factory {
+public class CountryFactory{
 
 	private final static String cameroonPattern = "\\(237\\)\\ ?[2368]\\d{7,8}$";
 	private static final String ethiopiaPattern = "\\(251\\)\\ ?[1-59]\\d{8}$";
@@ -16,8 +16,7 @@ public class CountryFactory implements Factory {
 	private static final String mozambiquePattern = "\\(258\\)\\ ?[28]\\d{7,8}$";
 	private static final String ugandaPattern = "\\(256\\)\\ ?\\d{9}$";
 
-	@Override
-	public Country extractCountry(String phone) {
+	public static Country extractCountry(String phone) {
 		if (checkCountryRegex(phone, cameroonPattern))
 			return Country.Cameroon;
 		if (checkCountryRegex(phone, ethiopiaPattern))
@@ -31,7 +30,7 @@ public class CountryFactory implements Factory {
 		return Country.Error;
 	}
 
-	private boolean checkCountryRegex(String phone, String regexPattern) {
+	private static boolean checkCountryRegex(String phone, String regexPattern) {
 		Pattern pattern = Pattern.compile(regexPattern);
 		Matcher matcher = pattern.matcher(phone);
 		if (matcher.find()) {

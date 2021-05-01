@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.jumia.entity.Country;
+import com.jumia.utils.CountryFactory;
 
 @Entity
 public class Customer {
@@ -19,7 +20,7 @@ public class Customer {
 	private String phoneNumber;
 
 	private boolean state;
-	
+
 	private Country country;
 
 	public Integer getId() {
@@ -44,6 +45,8 @@ public class Customer {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+		this.setCountry(CountryFactory.extractCountry(this.phoneNumber));
+		this.setState(this.country == Country.Error ? true : false);
 	}
 
 	public boolean getState() {
