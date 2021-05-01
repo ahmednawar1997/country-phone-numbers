@@ -28,4 +28,12 @@ public class NavigationObject {
 		this.recordsPerPage = recordsPerPage;
 	}
 
+	public int getStartRowNumber() {
+		return (this.getPage() - 1) * this.getRecordsPerPage();
+	}
+
+	public int getEndRowNumber() {
+		return this.getPage() + this.getRecordsPerPage();
+	}
+
 }

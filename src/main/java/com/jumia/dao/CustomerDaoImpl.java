@@ -29,12 +29,11 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public List<Customer> getAll(FilterObject filterObject) {
-		int startRowNumber = (filterObject.getNavigationObject().getPage() - 1)  * filterObject.getNavigationObject().getRecordsPerPage();
-		int endRowNumber = filterObject.getNavigationObject().getPage()	+ filterObject.getNavigationObject().getRecordsPerPage();
 		String sql = "SELECT * FROM ( SELECT ROW_NUMBER() OVER ( ORDER BY id ) AS RowNum, *" 
 				+ " FROM customer"
 				+ " )" 
-				+ " WHERE RowNum >= " + startRowNumber + " AND RowNum < " + endRowNumber
+				+ " WHERE RowNum >= " + filterObject.getNavigationObject().getStartRowNumber() 
+				+ " AND RowNum < " + filterObject.getNavigationObject().getEndRowNumber()
 				+ " ORDER BY RowNum";
 
 		List<Customer> customers = jdbcTemplate.query(sql, customerMapper);
