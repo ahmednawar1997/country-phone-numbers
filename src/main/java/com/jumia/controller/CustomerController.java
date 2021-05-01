@@ -18,7 +18,6 @@ public class CustomerController {
 
 	@GetMapping("/customers")
 	public List<Customer> list() {
-		System.out.println("in controller");
 		return service.getAll();
 	}
 }
