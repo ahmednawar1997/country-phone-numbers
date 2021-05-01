@@ -14,7 +14,7 @@ public class Customer {
 
 	private String name;
 
-	private PhoneNumber phoneNumber;
+	private String phoneNumber;
 
 	public Integer getId() {
 		return id;
@@ -32,11 +32,11 @@ public class Customer {
 		this.name = name;
 	}
 
-	public PhoneNumber getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(PhoneNumber phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 }
