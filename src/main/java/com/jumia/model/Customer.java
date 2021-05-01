@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.jumia.entity.Country;
+
 @Entity
 public class Customer {
 
@@ -52,4 +54,11 @@ public class Customer {
 		this.state = state;
 	}
 
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 }

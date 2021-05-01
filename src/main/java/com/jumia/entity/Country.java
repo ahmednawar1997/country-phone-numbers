@@ -1,6 +1,6 @@
 package com.jumia.entity;
 
-public enum CountryEnum {
+public enum Country {
 	Cameroon,
 	Ethiopia,
 	Morocco,
