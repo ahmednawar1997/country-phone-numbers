@@ -15,11 +15,7 @@ public class FilterObject {
 		this.state = state;
 	}
 
-
-
 	private NavigationObject navigationObject;
-
-	private String sortCol;
 
 	private String country;
 
@@ -31,14 +27,6 @@ public class FilterObject {
 
 	public void setNavigationObject(NavigationObject navigationObject) {
 		this.navigationObject = navigationObject;
-	}
-
-	public String getSortCol() {
-		return sortCol;
-	}
-
-	public void setSortCol(String sortCol) {
-		this.sortCol = sortCol;
 	}
 
 	public String getCountry() {
