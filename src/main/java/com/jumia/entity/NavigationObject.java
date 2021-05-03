@@ -29,11 +29,11 @@ public class NavigationObject {
 	}
 
 	public int getStartRowNumber() {
-		return (this.getPage() - 1) * this.getRecordsPerPage();
+		return (this.getPage()) * this.getRecordsPerPage();
 	}
 
 	public int getEndRowNumber() {
-		return this.getPage() + this.getRecordsPerPage();
+		return this.getStartRowNumber() + this.getRecordsPerPage();
 	}
 
 }

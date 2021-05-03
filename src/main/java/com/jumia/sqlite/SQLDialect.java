@@ -1,15 +1,21 @@
 package com.jumia.sqlite;
 
+import java.sql.SQLException;
 import java.sql.Types;
-
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.StandardSQLFunction;
 import org.hibernate.dialect.function.SQLFunctionTemplate;
 import org.hibernate.dialect.function.VarArgsSQLFunction;
 import org.hibernate.type.StringType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class SQLDialect extends Dialect {
-	public SQLDialect() {
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+
+	public SQLDialect() throws SQLException {
 		registerColumnType(Types.BIT, "integer");
 		registerColumnType(Types.TINYINT, "tinyint");
 		registerColumnType(Types.SMALLINT, "smallint");

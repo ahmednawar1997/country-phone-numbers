@@ -2,13 +2,20 @@ package com.jumia.entity;
 
 public class FilterObject {
 
-	public FilterObject(NavigationObject navigationObject, String sortCol, String country, Boolean state) {
+	public FilterObject(NavigationObject navigationObject, String country, Boolean state) {
 		super();
 		this.navigationObject = navigationObject;
-		this.sortCol = sortCol;
 		this.country = country;
 		this.state = state;
 	}
+
+	public FilterObject(String country, Boolean state) {
+		super();
+		this.country = country;
+		this.state = state;
+	}
+
+
 
 	private NavigationObject navigationObject;
 

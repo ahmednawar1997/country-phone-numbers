@@ -11,4 +11,6 @@ public interface CustomerDao {
 
 	List<Customer> getAll(FilterObject filterObject);
 
+	int count(FilterObject filterObject);
+
 }

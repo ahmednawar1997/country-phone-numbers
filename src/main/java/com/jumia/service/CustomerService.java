@@ -10,4 +10,6 @@ public interface CustomerService {
 	List<Customer> getAll();
 	
 	List<Customer> getAll(FilterObject filterObject);
+
+	int count(FilterObject filterObject);
 }

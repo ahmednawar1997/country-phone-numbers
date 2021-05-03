@@ -28,5 +28,10 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.getAll(filterObject);
 	}
 
+	@Override
+	public int count(FilterObject filterObject) {
+		return customerDao.count(filterObject);
+	}
+
 	
 }
