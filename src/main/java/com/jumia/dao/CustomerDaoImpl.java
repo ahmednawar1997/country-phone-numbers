@@ -63,14 +63,12 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public int updateCountryAndState(int customerId, Country country, boolean state) {
-
 		String sql = "UPDATE customer SET country = ?, isValid = ? WHERE id = ?";
 		return jdbcTemplate.update(sql, new Object[] { country, state, customerId });
 	}
 
 	@Override
 	public void addCountryAndStateCols() {
-
 		String addCountrySql = "ALTER TABLE customer ADD country varchar(255) Null";
 		String addStateSql = "ALTER TABLE customer ADD isValid BIT NUll";
 
