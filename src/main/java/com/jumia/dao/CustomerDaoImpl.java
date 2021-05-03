@@ -1,10 +1,11 @@
 package com.jumia.dao;
 
-import java.sql.Types;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.jumia.entity.Country;
 import com.jumia.entity.FilterObject;
 import com.jumia.mapper.CustomerMapper;
 import com.jumia.model.Customer;
@@ -41,6 +42,23 @@ public class CustomerDaoImpl implements CustomerDao {
 	public int count(FilterObject filterObject) {
 		String sql = "SELECT COUNT(*) FROM customer ";
 		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+
+	@Override
+	public int updateCountryAndState(int customerId, Country country, boolean state) {
+		
+		String sql = "UPDATE customer SET country = ?, isValid = ? WHERE id = ?";
+		return jdbcTemplate.update(sql, new Object[] {country, state, customerId});
+	}
+
+	@Override
+	public void addCountryAndStateCols() {
+
+		String addCountrySql = "ALTER TABLE customer ADD country varchar(255) Null";
+		String addStateSql = "ALTER TABLE customer ADD isValid BIT NUll";
+		
+		jdbcTemplate.execute(addCountrySql);
+		jdbcTemplate.execute(addStateSql);
 	}
 
 //	private String addFilterCriteria(FilterObject filterObject, String sql) {
