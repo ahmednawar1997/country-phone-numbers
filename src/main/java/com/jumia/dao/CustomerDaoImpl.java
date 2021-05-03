@@ -29,12 +29,15 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public List<Customer> getAll(FilterObject filterObject) {
 		String sql = "SELECT * FROM ( SELECT ROW_NUMBER() OVER ( ORDER BY id ) AS RowNum, *" + " FROM customer";
+		sql += " WHERE country = ?";
+		sql += " AND isValid = ?";
+		sql += " )";
+		sql += " WHERE RowNum BETWEEN ? AND ?  ORDER BY RowNum";
 
-		// sql = addFilterCriteria(filterObject, sql);
-		sql += " )" + " WHERE RowNum BETWEEN " + filterObject.getNavigationObject().getStartRowNumber() + " AND "
-				+ filterObject.getNavigationObject().getEndRowNumber() + " ORDER BY RowNum";
-
-		List<Customer> customers = jdbcTemplate.query(sql, customerMapper);
+		List<Customer> customers = jdbcTemplate.query(sql, customerMapper,
+				new Object[] { filterObject.getCountry(), filterObject.getState(),
+						filterObject.getNavigationObject().getStartRowNumber(),
+						filterObject.getNavigationObject().getEndRowNumber() });
 		return customers;
 	}
 
@@ -46,9 +49,9 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public int updateCountryAndState(int customerId, Country country, boolean state) {
-		
+
 		String sql = "UPDATE customer SET country = ?, isValid = ? WHERE id = ?";
-		return jdbcTemplate.update(sql, new Object[] {country, state, customerId});
+		return jdbcTemplate.update(sql, new Object[] { country, state, customerId });
 	}
 
 	@Override
@@ -56,23 +59,8 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		String addCountrySql = "ALTER TABLE customer ADD country varchar(255) Null";
 		String addStateSql = "ALTER TABLE customer ADD isValid BIT NUll";
-		
+
 		jdbcTemplate.execute(addCountrySql);
 		jdbcTemplate.execute(addStateSql);
 	}
-
-//	private String addFilterCriteria(FilterObject filterObject, String sql) {
-//		if (filterObject.getCountry() != null) {
-//			sql += " WHERE country=" + filterObject.getCountry();
-//		}
-//		if (filterObject.getState()) {
-//			sql += " WHERE phone REGEXP '" + CountryFactory.cameroonPattern;
-//			sql += "' OR phone REGEXP  '" + CountryFactory.ethiopiaPattern;
-//			sql += "' OR phone REGEXP  '" + CountryFactory.moroccoPattern;
-//			sql += "' OR phone REGEXP  '" + CountryFactory.mozambiquePattern;
-//			sql += "' OR phone REGEXP  '" + CountryFactory.ugandaPattern + "'";
-//		}
-//		return sql;		
-//	}
-
 }

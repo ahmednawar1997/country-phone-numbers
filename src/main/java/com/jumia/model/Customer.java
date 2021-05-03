@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.jumia.entity.Country;
-import com.jumia.utils.CountryUtils;
 
 
 @Entity
@@ -46,8 +45,6 @@ public class Customer {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-		this.setCountry(CountryUtils.getCountry(this.phoneNumber));
-		this.setValid(CountryUtils.validateCountry(this.phoneNumber));
 	}
 
 	public Country getCountry() {
