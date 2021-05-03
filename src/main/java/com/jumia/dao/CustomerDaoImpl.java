@@ -31,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public List<Customer> getAll(FilterObject filterObject) {
 		String sql = "SELECT * FROM ( SELECT ROW_NUMBER() OVER ( ORDER BY id ) AS RowNum, * FROM customer";
-		if (filterObject.getCountry() != null) {
+		if (filterObject.getCountry() != null && !filterObject.getCountry().equals("")) {
 			sql += " WHERE country = ?";
 		} else {
 			sql += " WHERE 1 = 1";
@@ -50,7 +50,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public int count(FilterObject filterObject) {
 		String sql = "SELECT COUNT(*) FROM customer ";
 
-		if (filterObject.getCountry() != null) {
+		if (filterObject.getCountry() != null && !filterObject.getCountry().equals("")) {
 			sql += " WHERE country = ?";
 		} else {
 			sql += " WHERE 1 = 1";

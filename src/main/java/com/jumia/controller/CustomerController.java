@@ -30,7 +30,9 @@ public class CustomerController {
 	}
 	@CrossOrigin
 	@GetMapping("/count")
-	public int count(@RequestParam String country,	@RequestParam Boolean state) {
+	public int count(
+			@RequestParam(required = false) String country,
+			@RequestParam(required = false) Boolean state) {
 		FilterObject filterObject = new FilterObject(country, state);
 		return service.count(filterObject);
 	}

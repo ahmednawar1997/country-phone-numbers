@@ -21,14 +21,14 @@ public class CustomerSetter implements PreparedStatementSetter {
 	@Override
 	public void setValues(PreparedStatement ps) throws SQLException {
 		int i = 0;
-		if (filterObject.getCountry() != null) {
+		if (filterObject.getCountry() != null && !filterObject.getCountry().equals("")) {
 			ps.setString(++i, filterObject.getCountry());
 		}
-		
+
 		if (filterObject.getState() != null) {
 			ps.setBoolean(++i, filterObject.getState());
 		}
-		
+
 		if (!isCount) {
 			ps.setInt(++i, filterObject.getNavigationObject().getStartRowNumber());
 			ps.setInt(++i, filterObject.getNavigationObject().getEndRowNumber());

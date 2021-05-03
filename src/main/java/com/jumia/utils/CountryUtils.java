@@ -11,6 +11,8 @@ import com.jumia.entity.Country;
 
 @Component
 public class CountryUtils {
+	
+	public static final String NO_COUNTRY_CODE = "000";
 
 	public static final String cameroonPattern = "\\(237\\)\\ ?[2368]\\d{7,8}$";
 	public static final String ethiopiaPattern = "\\(251\\)\\ ?[1-59]\\d{8}$";
@@ -72,7 +74,7 @@ public class CountryUtils {
 			String countryCode = matcher.group();
 			return countryCode.substring(1, countryCode.length()-1);
 		}
-		return "000";
+		return NO_COUNTRY_CODE;
 	}
 
 	private static boolean checkCountryRegex(String phone, String regexPattern) {
