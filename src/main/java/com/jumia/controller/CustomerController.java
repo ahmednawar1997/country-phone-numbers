@@ -22,15 +22,15 @@ public class CustomerController {
 	@CrossOrigin
 	@GetMapping("/")
 	public List<Customer> list(@RequestParam int page, @RequestParam int numPerPage,
-			@RequestParam String country,
-			@RequestParam boolean state) {
+			@RequestParam(required = false) String country,
+			@RequestParam(required = false) Boolean state) {
 		NavigationObject navigationObject = new NavigationObject(page, numPerPage);
 		FilterObject filterObject = new FilterObject(navigationObject, country, state);
 		return service.getAll(filterObject);
 	}
 	@CrossOrigin
 	@GetMapping("/count")
-	public int count(@RequestParam String country,	@RequestParam boolean state) {
+	public int count(@RequestParam String country,	@RequestParam Boolean state) {
 		FilterObject filterObject = new FilterObject(country, state);
 		return service.count(filterObject);
 	}
