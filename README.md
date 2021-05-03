@@ -46,3 +46,11 @@ List of all phone numbers available in the DB. Filter by country and state.
 * searchCustomers: Test customers retrieved with correct country
 * checkPagination: Test pagination fetches correct number of data
 * checkFirstCustomer: Test first customer retrieved from db
+
+## How to run
+### Local
+* Import project in eclipse with java 11
+* Right click on your project.
+* Select "Run As" -> "Maven build"
+* Then in "Goals" field, enter "spring-boot:run"
+* Apply & Run.
