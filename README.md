@@ -56,6 +56,7 @@ List of all phone numbers available in the DB. Filter by country and state.
 * Apply & Run.
 
 ## Docker
+Run $ 'mvn clean package', or generate an executable jar file from eclipse maven.
 Make sure to have docker machine set up and ready.
 <pre><code>docker build -t jumia_app
 docker run -p 8080:8080 jumia_app:latest
