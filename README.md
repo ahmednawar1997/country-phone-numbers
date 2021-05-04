@@ -60,5 +60,5 @@ Make sure to have docker machine set up and ready.
 <pre><code>docker build -t jumia_app
 docker run -p 8080:8080 jumia_app:latest
 </code></pre>
-Wait for the java server to run
-When calling an api <your-docker-machine-ip>:8080
+Wait for the java server to run.
+When calling an api [your-docker-machine-ip]:8080
